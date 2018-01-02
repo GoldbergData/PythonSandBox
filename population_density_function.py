@@ -8,6 +8,7 @@ def population_density(population, land_area):
     density = population / land_area
     return density
 
+
 # Here are test cases to verify that your function works as expected:
 test1 = population_density(10, 1)
 expected_result1 = 10
