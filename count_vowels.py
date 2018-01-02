@@ -1,3 +1,4 @@
+# coding=utf-8
 def count_vowels(a: object) -> object:
     lower_a = a.lower()
     vowels = 'aeiou'
