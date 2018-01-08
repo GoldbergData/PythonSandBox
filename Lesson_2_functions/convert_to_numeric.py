@@ -5,6 +5,6 @@ def convert_to_numeric(number):
     """
     Convert the score to a float.
     """
-    return float(number)
+    return float(number)s
 
 
