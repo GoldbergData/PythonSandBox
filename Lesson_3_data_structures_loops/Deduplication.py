@@ -16,7 +16,7 @@ def remove_duplicates(input_list):
     for i in range(length):
         length = len(input_list)
         j = 0
-        if i >= length: # commit
+        if i >= length:
             break
         while j < (length - 1):
             if input_list[i] != input_list[j]:
