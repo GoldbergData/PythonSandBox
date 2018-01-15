@@ -13,27 +13,25 @@ def remove_duplicates(input_list):
              elements of the original list.
     """
     length = len(input_list)
-    for i in range(len(input_list)):
-        j = i + 1
-        print("debug: i: {}".format(i))
-        print("debug: j: {}".format(j))
-        while j < length:
-            if i > 0:
-                print("debug inside if: i: {}".format(i))
-                input_list.insert(0, input_list[i])
-                print("debug after if: i: {}".format(input_list[0]))
-            print("debug: input_list[i]: {}".format(input_list[i]))
-            print("debug: input_list[j]: {}".format(input_list[j]))
-            if input_list[0] == input_list[j]:
-                del input_list[j]
-            j += 1
+    for i in range(length):
+        length = len(input_list)
+        j = 0
+        if i >= length:
+            break
+        while j < (length - 1):
+            if input_list[i] != input_list[j]:
+                j += 1
+            if input_list[i] == input_list[j]:
+                if i == j:
+                    j += 1
+                    pass
+                else:
+                    del input_list[j]
+                    length = len(input_list)
     return input_list
 
 
-
-
-
-
-
-countries = ['Angola', 'Maldives', 'India', 'United States', 'India']
-print(remove_duplicates(countries))
+test1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10]
+test2 = [2, 2, 3, 3, 5, 5, 5, 5, 5, 5]
+test3 = ['Angola', 'Maldives', 'India', 'United States', 'India']
+print(remove_duplicates(test3))
