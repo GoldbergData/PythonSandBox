@@ -14,7 +14,6 @@ Beatles_Discography = {"Please Please Me": 1963, "With the Beatles": 1963,
 
 def most_prolific(dict_input):
     """
-
     :param dict_input: Beatles Discography
     :return: returns the year in which the most albums were released. If you call the function on the
              Beatles_Discography it should return
@@ -23,11 +22,11 @@ def most_prolific(dict_input):
 
     counts = {}
     for i in dict_input:
-        if i not in counts:
-            counts[i] = 1
+        if dict_input[i] not in counts:
+            counts[dict_input[i]] = 1
         else:
-            counts[i] += 1
-    return(counts)
+            counts[dict_input[i]] += 1
+    return max(counts, key=lambda key: counts[key])
 
 print(most_prolific(Beatles_Discography))
 

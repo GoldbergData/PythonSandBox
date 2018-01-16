@@ -31,7 +31,7 @@ def remove_duplicates(input_list):
     return input_list
 
 
-test1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10]
+test1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 10, 10, 10, 10]
 test2 = [2, 2, 3, 3, 5, 5, 5, 5, 5, 5]
 test3 = ['Angola', 'Maldives', 'India', 'United States', 'India']
-print(remove_duplicates(test3))
+print(remove_duplicates(test1))
