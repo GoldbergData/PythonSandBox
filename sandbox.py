@@ -8,12 +8,10 @@
 #
 # print(max(counts, key=my_lambda))
 
+# multiple_url = ['https://en.wikipedia.org/wiki/Floating_point'] * 25
+#
+# print(multiple_url)
 
-egg_count = 0
+test_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-
-def buy_eggs():
-    egg_count += 12  # purchase a dozen eggs
-
-
-buy_eggs()
+print(test_list[:-1])
