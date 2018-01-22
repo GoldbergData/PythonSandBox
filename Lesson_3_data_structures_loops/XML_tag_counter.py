@@ -15,6 +15,8 @@ def tag_count(input_list):
     for i in input_list:
         matched = (p.match(i))
         if matched:
+            print(matched.group())
+        if matched:
             counter += 1
     return counter
 
