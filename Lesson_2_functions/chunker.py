@@ -10,20 +10,19 @@
 
 # should output:
 
-# [0, 1, 2, 3]
-# [4, 5, 6, 7]
-# [8, 9, 10, 11]
-# [12, 13, 14, 15]
-# [16, 17, 18, 19]
-# [20, 21, 22, 23]
-# [24]
+# 1: [0, 1, 2, 3]
+# 2: [4, 5, 6, 7]
+# 3: [8, 9, 10, 11]
+# 4: [12, 13, 14, 15]
+# 5: [16, 17, 18, 19]
+# 6: [20, 21, 22, 23]
+# 7: [24]
 
 def chunker(iterable, size):
     i = 0
     while i < len(list(iterable)):
-        yield iterable[size - size:size]
-        size += size
-        i += 1
+        yield iterable[i:i + size]
+        i += size
 
 
 for chunk in chunker(range(25), 4):
