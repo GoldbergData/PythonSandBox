@@ -18,7 +18,6 @@ with open(word_file, 'r') as words:
         if 3 < len(word) < 8:
             word_list.append(word)
 
-
 # Add your function generate_password here
 # It should return a string consisting of three random words
 # concatenated together without spaces
@@ -28,6 +27,5 @@ def generate_password():
     for i in range(3):
         password += random.choice(word_list)
     return password
-
 
 print(generate_password())
