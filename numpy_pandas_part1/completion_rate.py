@@ -34,8 +34,7 @@ def overall_completion_rate(female_completion, male_completion):
     """
     completion_rate = []
     for i in range(len(female_completion)):
-        print(i)
-        completion_rate[i] = (female_completion[i] + male_completion[i]) / 2
+        completion_rate.append((female_completion[i] + male_completion[i]) / 2)
     return np.array(completion_rate)
 
 print(overall_completion_rate(female_completion, male_completion))
