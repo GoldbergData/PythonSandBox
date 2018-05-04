@@ -45,6 +45,6 @@ def mean_riders_for_max_station(ridership):
     """
 
     overall_mean = ridership.mean()
-    mean_for_max = ridership[: , np.argmax(ridership[0, :])].mean()
+    mean_for_max = ridership[:, np.argmax(ridership[0, :])].mean()
 
     return (overall_mean, mean_for_max)
