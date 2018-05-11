@@ -3,8 +3,6 @@ import pandas as pd
 import numpy as np
 import os
 
-#os.chdir(os.getcwd() + "/project_divty_bike_share")
-
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
@@ -107,12 +105,15 @@ def time_stats(df):
 
     # display the most common month
     popular_month = df["month"].mode()[0]
+    print("Most popular month: {}\n".format(popular_month))
 
     # display the most common day of week
     popular_day = df["day_of_week"].mode()[0]
+    print("Most popular weekday: {}\n".format(popular_day))
 
     # display the most common start hour
     popular_start_hour = df["hour"].mode()[0]
+    print("Most popular start hour: {}\n".format(popular_start_hour))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -126,13 +127,21 @@ def station_stats(df):
 
     # display most commonly used start station
     popular_start_station = df["Start Station"].mode()[0]
+    print("Most common start station: {}\n".format(pop_start_station))
 
     # display most commonly used end station
     popular_end_station = df["End Station"].mode()[0]
+    print("Most common end station: {}\n".format(pop_end_station))
 
 
     # display most frequent combination of start station and end station trip
+    pop_start_station, pop_end_station, frequency = df.groupby(['Start Station',
+                                                                'End Station']).size().reset_index().max(
 
+    ).values
+    print("Most frequent combination of start and end station trip: Start "
+          "Station: {}, End Station: {}, Frequency: {}\n".format(pop_end_station,
+                                               pop_end_station, frequency))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -145,10 +154,12 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # display total travel time
-
+    total_trip_duration_sec = df["Trip Duration"].sum()
+    print("Total trip duration (seconds): {}\n".format(total_trip_duration_sec))
 
     # display mean travel time
-
+    mean_travel_time = df["Trip Duration"].mean()
+    print("Mean trip duration (seconds): {}\n".format(total_trip_duration_sec))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -161,21 +172,39 @@ def user_stats(df):
     start_time = time.time()
 
     # Display counts of user types
+    user_type_count = df["User Type"].value_counts()
+    print("Count by user type: {}\n".format(user_type_count))
 
 
     # Display counts of gender
-
+    gender_count = df["Gender"].value_counts()
+    print("Count by gender: {}\n".format(gender_count))
 
     # Display earliest, most recent, and most common year of birth
+    earliest_bd = df["Birth Year"].min()
+    print("Earliest birthday: {}\n".format(earliest_bd))
 
+    recent_bd = df["Birth Year"].max()
+    print("Recent birthday: {}\n".format(recent_bd))
+
+    common_bd = df["Birth Year"].mode()
+    print("Most common birthday: {}\n".format(common_bd))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
 def main():
+    import time
+    import pandas as pd
+    import numpy as np
+    import os
     while True:
         city, month, day = get_filters()
+        if os.getcwd() == os.getcwd() + "/project_divy_bike_share":
+            continue
+        else:
+            os.chdir(os.getcwd() + "/project_divy_bike_share")
         df = load_data(city, month, day)
 
         time_stats(df)
