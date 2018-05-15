@@ -2,6 +2,7 @@ import time
 import pandas as pd
 import calendar
 from datetime import date
+import math
 
 CITY_DATA = {"chicago": "chicago.csv",
              "new york city": "new_york_city.csv",
@@ -307,6 +308,8 @@ def trip_duration_stats(df, city):
         df_grouped_dict = dict(df_grouped["Trip Duration"].mean())
         print("Mean trip duration by age:\n")
         for k, v in df_grouped_dict.items():
+            if math.isnan(v):
+                continue
             v = "{:,} hours, {:,} minutes, {:,} seconds.".format(
                 (v // 60 // 60).__int__(), (v % 60 % 60).__int__(),
                 (v % 60).__int__())
