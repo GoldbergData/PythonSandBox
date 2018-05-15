@@ -153,9 +153,11 @@ def load_data(city, month="all", day="all"):
         # filter by day of week to create the new dataframe
         df = df[df["day_of_week"] == day.title()]
 
-    # imputed age for Chicago and New York City
-    df["imputed_age"] = round(date.today().year - df["Birth Year"])
-    df["binned_age"] = pd.cut(df["imputed_age"], list(range(1, 100, 15)))
+    if city in ["chicago", "new york city"]:
+
+        # imputed age for Chicago and New York City
+        df["imputed_age"] = round(date.today().year - df["Birth Year"])
+        df["binned_age"] = pd.cut(df["imputed_age"], list(range(1, 100, 15)))
 
     return df
 
