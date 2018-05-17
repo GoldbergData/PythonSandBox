@@ -22,7 +22,6 @@ def get_filters():
     the month to filter by, or "all" to apply no month filter (str) day -
     name of the day of week to filter by, or "all" to apply no day filter
     """
-    import os
 
     while True:
         print("Hello! Let\"s explore U.S. bikeshare data!\n")
