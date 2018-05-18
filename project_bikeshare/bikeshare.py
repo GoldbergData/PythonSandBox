@@ -132,12 +132,8 @@ def preview_data(df):
         print(df2.iloc[i-10:i])
         print()
         prompt = input("Continue printing (yes/no)? ").lower()
-        if prompt == "no":
+        if prompt != "yes":
             break
-        while prompt != "yes":
-            prompt = input("Invalid input. Please enter yes to continue or no to quit preview: ")
-            if prompt == "no":
-                break
 
 def load_data(city, month="all", day="all"):
     """
@@ -435,7 +431,7 @@ def main():
         print("-" * 40)
         print("Calculating Statistics...")
         print()
-        time.sleep(2)
+        time.sleep(1)
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df, city)
