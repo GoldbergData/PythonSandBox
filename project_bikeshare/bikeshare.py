@@ -36,7 +36,6 @@ def get_filters():
                          "or Washington: ").lower()
             i += 1
             if i == 2:
-                print(os.getcwd())
                 print("\nLooks like you're having trouble. Here are the "
                       "available inputs: \n")
                 print(cities)
@@ -116,6 +115,29 @@ def get_filters():
         print("-" * 40)
         return city, month, day
 
+def preview_data(df):
+    """
+
+    Args:
+        data frame
+    Returns:
+         Preview of data frame by 10 rows
+    """
+    print("Here are the first ten rows:")
+    print()
+    i = 0
+    df2 = df.rename(columns={"Unnamed: 0": "ID"}).reset_index()
+    while True:
+        i += 10
+        print(df2.iloc[i-10:i])
+        print()
+        prompt = input("Continue printing (yes/no)? ").lower()
+        if prompt == "no":
+            break
+        while prompt != "yes":
+            prompt = input("Invalid input. Please enter yes to continue or no to quit preview: ")
+            if prompt == "no":
+                break
 
 def load_data(city, month="all", day="all"):
     """
@@ -331,8 +353,8 @@ def trip_duration_stats(df, city):
 
     df_grouped_dict = dict(df_grouped["Trip Duration"].mean().sort_values(
         ascending=False).head(n=5))
-    print("Top five (by mean trip duration) start/end stations mean trip "
-          "duration:\n")
+    print("Top five (by total trip duration) start/end stations total "
+          "trip duration:\n")
     for k, v in df_grouped_dict.items():
         v = "{:,} hours, {:,} minutes, {:,} seconds.".format(
             (v // 60 // 60).__int__(), (v % 60 % 60).__int__(),
@@ -405,6 +427,15 @@ def main():
                 days):
             break
         df = load_data(city, month, day)
+        raw_data = input("Would you like to preview the raw data before "
+                         "viewing the descriptive statistics (yes/no)? ")
+        if raw_data == "yes":
+            preview_data(df)
+        print()
+        print("-" * 40)
+        print("Calculating Statistics...")
+        print()
+        time.sleep(2)
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df, city)
