@@ -313,7 +313,7 @@ def trip_duration_stats(df, city):
 
         df_grouped = df.groupby(["binned_age"])
         df_grouped_dict = dict(df_grouped["Trip Duration"].sum())
-        print("Total trip duration by age (inferred from Birth Year):\n")
+        print("Total trip duration by age (inferred by Birth Year):\n")
         for k, v in df_grouped_dict.items():
             v = "{:,} hours, {:,} minutes, {:,} seconds.".format(
                 (v // 60 // 60).__int__(), (v % 60 % 60).__int__(),
@@ -337,8 +337,7 @@ def trip_duration_stats(df, city):
     df_grouped = df.groupby(["Start Station", "End Station"])
     df_grouped_dict = dict(df_grouped["Trip Duration"].sum().sort_values(
         ascending=False).head(n=5))
-    print("Top five (by total trip duration) start/end stations total "
-          "trip duration:\n")
+    print("Top five start/end stations by total trip duration:\n")
     for k, v in df_grouped_dict.items():
         v = "{:,} hours, {:,} minutes, {:,} seconds.".format(
             (v // 60 // 60).__int__(), (v % 60 % 60).__int__(),
@@ -349,8 +348,7 @@ def trip_duration_stats(df, city):
 
     df_grouped_dict = dict(df_grouped["Trip Duration"].mean().sort_values(
         ascending=False).head(n=5))
-    print("Top five (by total trip duration) start/end stations total "
-          "trip duration:\n")
+    print("Top five start/end stations by mean trip duration:\n")
     for k, v in df_grouped_dict.items():
         v = "{:,} hours, {:,} minutes, {:,} seconds.".format(
             (v // 60 // 60).__int__(), (v % 60 % 60).__int__(),
