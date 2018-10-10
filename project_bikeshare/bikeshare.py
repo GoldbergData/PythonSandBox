@@ -32,7 +32,7 @@ def get_filters():
         city = input("City: ").lower()
         i = 0
         while city not in CITY_DATA.keys():
-            city = input("Invalid entry. Please Chicago, New York City, "
+            city = input("Invalid entry. Please select Chicago, New York City, "
                          "or Washington: ").lower()
             i += 1
             if i == 2:
